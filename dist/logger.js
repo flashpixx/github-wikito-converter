@@ -3,11 +3,9 @@
 var winston = require('winston');
 
 // Configure CLI on an instance of winston.Logger
-var logger = new winston.Logger({
+var logger = winston.createLogger({
   transports: [new winston.transports.Console({ level: 'warn' })]
 });
-
-logger.cli();
 
 module.exports = logger;
 //# sourceMappingURL=logger.js.map
