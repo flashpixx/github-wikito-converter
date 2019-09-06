@@ -49,20 +49,21 @@
     "iojs": ">= 1.0"
   },
   "author": "Yakiv Mospan <yakiv.mospan@gmail.com> (https://github.com/yakivmospan)",
-  "repository" :{
-     "type" : "git"
-    , "url" : "https://github.com/yakivmospan/github-wikito-converter"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yakivmospan/github-wikito-converter"
   },
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^2.9.34",
-    "bootstrap": "^3.3.7",
+    "bluebird": "^3.5.5",
+    "bootstrap": "^4.3.1",
     "commander": "^2.8.1",
     "datauri": "^1.0.5",
     "defaults": "^1.0.2",
     "fs-extra": "^0.23.1",
-    "highlight.js": "^9.12.0",
-    "jquery": "^2.1.4",
+    "highlight.js": "^9.15.10",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.15.0",
     "marked": "^0.3.6",
     "node-dir": "^0.1.9",
     "open": "0.0.5",
@@ -73,8 +74,8 @@
     "babel": "^5.8.21",
     "babel-core": "^5.8.23",
     "eslint": "^1.2.1",
-    "istanbul": "^0.3.19",
     "mocha": "^2.2.5",
+    "nyc": "^14.1.1",
     "require-dir": "^0.3.0",
     "should": "^7.0.4"
   }
