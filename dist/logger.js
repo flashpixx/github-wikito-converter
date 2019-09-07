@@ -1,11 +1,3 @@
-'use strict';
-
-var winston = require('winston');
-
-// Configure CLI on an instance of winston.Logger
-var logger = winston.createLogger({
-  transports: [new winston.transports.Console({ level: 'warn' })]
-});
-
-module.exports = logger;
+'use strict';var winston=require('winston'),logger=winston.createLogger({transports:[new winston.transports.Console({level:'warn'})]});// Configure CLI on an instance of winston.Logger
+module.exports=logger;
 //# sourceMappingURL=logger.js.map

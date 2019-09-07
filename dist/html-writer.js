@@ -1,75 +1,58 @@
-"use strict";
+"use strict";var BaseWriter=require("./base-writer"),helpers=require("./helpers"),logger=require("./logger");class HtmlWriter extends BaseWriter{getExtension(){return"html"}write(){var a=this.buildHeader(),b=this.converter.getPages();return logger.debug("Generating html: %d pages to generate",b.length),this.converter.getPages().forEach(b=>{var c=helpers.getPageIdFromFilenameOrLink(b.file);a+=`<p class="page" id="${c}"></p><h1>${b.title}</h1>\n`+b.html},this),a+=this.buildFooter(),super.write(this.getFilename(),a)}buildHeader(){var a=`<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>${this.converter.getOption("title")}</title>
+    ${this.getCssTags()}
+    <style>${this.getExtraCss()}</style>
+    ${this.getJsTags()}
+  </head>
+  <body id="page-top" class="html-doc">
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand doc-title" href="#page-top">${this.converter.getOption("title")}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+          ${this.getLogoImage()}
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+    <div id="documentation-container" class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="nav-container">
+            <div class="nav-inner" id="scroll-spy" style="width: min-content; overflow: auto; top: 60px; bottom: 0; padding 10px 0 10px 0;">
+              <span class="toc"></span>
+              ${this.converter.getToc().getHtml()}
+              ${this.getFooter()}
+            </div>
+          </div>
+        </div>
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var BaseWriter = require("./base-writer"),
-    helpers = require('./helpers'),
-    logger = require('./logger');
-
-var HtmlWriter = (function (_BaseWriter) {
-  _inherits(HtmlWriter, _BaseWriter);
-
-  function HtmlWriter() {
-    _classCallCheck(this, HtmlWriter);
-
-    _get(Object.getPrototypeOf(HtmlWriter.prototype), "constructor", this).apply(this, arguments);
-  }
-
-  _createClass(HtmlWriter, [{
-    key: "getExtension",
-    value: function getExtension() {
-      return 'html';
-    }
-  }, {
-    key: "write",
-    value: function write() {
-      var html = this.buildHeader(),
-          pages = this.converter.getPages();
-
-      logger.debug('Generating html: %d pages to generate', pages.length);
-
-      this.converter.getPages().forEach(function (page) {
-        var pageId = helpers.getPageIdFromFilenameOrLink(page.file);
-        html += "<p class=\"page\" id=\"" + pageId + "\"></p><h1>" + page.title + "</h1>\n" + page.html;
-      }, this);
-
-      html += this.buildFooter();
-      return _get(Object.getPrototypeOf(HtmlWriter.prototype), "write", this).call(this, this.getFilename(), html);
-    }
-  }, {
-    key: "buildHeader",
-    value: function buildHeader() {
-
-      var htmlHeader = "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>" + this.converter.getOption('title') + "</title>\n    " + this.getCssTags() + "\n    <style>" + this.getExtraCss() + "</style>\n    " + this.getJsTags() + "\n  </head>\n  <body id=\"page-top\" class=\"html-doc\">\n    <!-- Fixed navbar -->\n    <div class=\"navbar navbar-default navbar-fixed-top\">\n      <div class=\"container\">\n        <div class=\"navbar-header\">\n          <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n            <span class=\"sr-only\">Toggle navigation</span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n            <span class=\"icon-bar\"></span>\n          </button>\n          <a class=\"navbar-brand doc-title\" href=\"#page-top\">" + this.converter.getOption('title') + "</a>\n        </div>\n        <div id=\"navbar\" class=\"navbar-collapse collapse\">\n          <ul class=\"nav navbar-nav\">\n          " + this.getLogoImage() + "\n        </div><!--/.nav-collapse -->\n      </div>\n    </div>\n    <div id=\"documentation-container\" class=\"container\">\n      <div class=\"row\">\n        <div class=\"col-md-3\">\n          <div class=\"nav-container\">\n            <div class=\"nav-inner\" id=\"scroll-spy\" style=\"width: min-content; overflow: auto; top: 60px; bottom: 0; padding 10px 0 10px 0;\">\n              <span class=\"toc\"></span>\n              " + this.converter.getToc().getHtml() + "\n              " + this.getFooter() + "\n            </div>\n          </div>\n        </div>\n\n\n        <div class=\"col-md-9\">\n";
-      return htmlHeader;
-    }
-  }, {
-    key: "buildFooter",
-    value: function buildFooter() {
-      var footer = "\n        </div> <!-- /div.col-md-9 -->\n      </div> <!-- /div.row -->\n    </div> <!-- /div.container -->\n  </body>\n  <script>\n    $('body').scrollspy({ target: '#scroll-spy', offset: 40 })\n  </script>\n</html>";
-      return footer;
-    }
-  }, {
-    key: "createImageLogoTag",
-    value: function createImageLogoTag(path) {
-      return "\n              </ul>\n                <ul class=\"nav navbar-nav navbar-right gwc-navbar-right\">\n                <li><img class=\"logo-img\" src=\"" + path + "\"></li>\n              </ul>";
-    }
-  }, {
-    key: "getFooter",
-    value: function getFooter() {
-      var footerOption = this.converter.getOption('footer');
-      return footerOption ? "<div class=\"footer\">" + footerOption + "</div>" : '';
-    }
-  }]);
-
-  return HtmlWriter;
-})(BaseWriter);
-
-module.exports = HtmlWriter;
+        <div class="col-md-9">
+`;return a}buildFooter(){`
+        </div> <!-- /div.col-md-9 -->
+      </div> <!-- /div.row -->
+    </div> <!-- /div.container -->
+  </body>
+  <script>
+    $('body').scrollspy({ target: '#scroll-spy', offset: 40 })
+  </script>
+</html>`;return"\n        </div> <!-- /div.col-md-9 -->\n      </div> <!-- /div.row -->\n    </div> <!-- /div.container -->\n  </body>\n  <script>\n    $('body').scrollspy({ target: '#scroll-spy', offset: 40 })\n  </script>\n</html>"}createImageLogoTag(a){return`
+              </ul>
+                <ul class="nav navbar-nav navbar-right gwc-navbar-right">
+                <li><img class="logo-img" src="${a}"></li>
+              </ul>`}getFooter(){let a=this.converter.getOption("footer");return a?`<div class="footer">${a}</div>`:""}}module.exports=HtmlWriter;
 //# sourceMappingURL=html-writer.js.map

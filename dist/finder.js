@@ -1,82 +1,13 @@
-"use strict";
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-var dir = require('node-dir'),
-    path = require('path'),
-    fs = require('fs-extra'),
-    util = require('util'),
-    logger = require('./logger'),
-    Promise = require("bluebird");
-
-/**
+'use strict';var dir=require('node-dir'),path=require('path'),fs=require('fs-extra'),util=require('util'),logger=require('./logger'),Promise=require('bluebird');/**
  * Finder class
- */
-
-var Finder = (function () {
-  function Finder() {
-    _classCallCheck(this, Finder);
-  }
-
-  _createClass(Finder, null, [{
-    key: 'searchMarkdownFiles',
-
-    /**
-     * Search for md files
-     *
-     * @param {string} wikiPath Path to wiki directory
-     * @returns {Promise}
-     */
-    value: function searchMarkdownFiles(wikiPath) {
-
-      return new Promise(function (resolve, reject) {
-
-        var mdFiles = {},
-            aliases = {},
-            dirOpts = { match: /.md/, exclude: /^_/ };
-
-        dir.readFiles(wikiPath, dirOpts, function (err, content, filename, next) {
-          if (!err) {
-            mdFiles[filename] = content;
-            var base = path.basename(filename);
-            aliases[base.substr(0, base.length - 3)] = filename;
-          }
-          next();
-        }, function (err, files) {
-          if (err) {
-            return reject(err);
-          }
-          logger.debug(util.format('Found %d markdown files and %d links pointing to them in TOC', Object.keys(mdFiles).length, Object.keys(aliases).length));
-          resolve({ files: mdFiles, aliases: aliases });
-        });
-      });
-    }
-
-    /**
-     * Search for a file among multiple directories, ordered by priority
-     *
-     * @returns {string|null}
-     */
-  }, {
-    key: 'searchForFile',
-    value: function searchForFile(files, search_path) {
-      var file = null;
-      files.some(function (f) {
-        var p = path.join(search_path, f);
-        try {
-          return fs.statSync(p).isFile() && (file = p);
-        } catch (e) {
-          return false;
-        }
-      }, this);
-      return file;
-    }
-  }]);
-
-  return Finder;
-})();
-
-module.exports = Finder;
+ */class Finder{/**
+   * Search for md files
+   *
+   * @param {string} wikiPath Path to wiki directory
+   * @returns {Promise}
+   */static searchMarkdownFiles(a){return new Promise(function(b,c){var d={},e={},f={match:/.md/,exclude:/^_/};dir.readFiles(a,f,function(a,b,c,f){if(!a){d[c]=b;var g=path.basename(c);e[g.substr(0,g.length-3)]=c}f()},function(a){return a?c(a):void(logger.debug(util.format('Found %d markdown files and %d links pointing to them in TOC',Object.keys(d).length,Object.keys(e).length)),b({files:d,aliases:e}))})})}/**
+   * Search for a file among multiple directories, ordered by priority
+   *
+   * @returns {string|null}
+   */static searchForFile(a,b){var c=null;return a.some(a=>{var d=path.join(b,a);try{return fs.statSync(d).isFile()&&(c=d)}catch(a){return!1}},this),c}}module.exports=Finder;
 //# sourceMappingURL=finder.js.map
