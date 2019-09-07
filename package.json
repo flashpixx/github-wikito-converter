@@ -71,6 +71,7 @@
     "wkhtmltopdf": "^0.3.4"
   },
   "devDependencies": {
+    "acorn": "^7.0.0",
     "babel": "^5.8.21",
     "babel-core": "^6.26.3",
     "eslint": "^6.3.0",
