@@ -22,6 +22,7 @@ class Cli {
       .option("-s, --subtitle <sub title>", "Wiki sub title", '')
       .option("-d, --disable-inline-assets", "Disable inlining of css & js in html document")
 
+      .option("--lang <language>", "Language definition (defaukt: en)", "en")
       .option("--logo-img <logo-file>", "Logo image file")
       .option("--footer <footer>" , "Wiki footer")
 
@@ -46,6 +47,7 @@ class Cli {
       format: this.program.format,
       output: this.program.output,
       filename: this.program.fileName,
+      lang: this.program.lang,
       title: this.program.title,
       subtitle: this.program.subtitle,
       logoImage: this.program.logoImg,

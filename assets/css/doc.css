@@ -49,3 +49,55 @@ body {
     overflow-x: hidden;
     padding: 1.5em;
 }
+
+
+
+
+
+
+pdf-doc{
+    padding: 0px;
+}
+
+.pdf-doc .navbar-toggle {
+    display: none;
+}
+
+.pdf-doc .coverimg {
+    max-width:50%;
+}
+
+.pdf-doc .covertitle {
+   padding-top: 40%;
+   text-align: right;
+   font-size: 40px;
+}
+
+.pdf-doc .nav-container {
+  page-break-before: always !important;
+  display: block;
+}
+
+.pdf-doc pre.hljs, .pdf-doc code {
+    font-size: 80%;
+}
+
+.pdf-doc .nav > li > a {
+    padding: 3px 6px;
+}
+
+.pdf-doc .nav > li > .pdf-doc .nav > li > a {
+    padding:2px 16px;
+}
+
+.pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li  > a {
+    padding:2px 24px;
+}
+
+.pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li  > a {
+    padding:2px 32px;
+}
+
+.pdf-doc .nav li span {
+    padding: 3px 6px;
+}
