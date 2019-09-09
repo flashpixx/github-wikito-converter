@@ -36,6 +36,14 @@ class PdfWriter extends BaseWriter {
 
     html += this.buildFooter()
 
+    // @todo test html write
+    let stream = fs.createWriteStream("temo_pdv.html");
+    stream.once('open', function(fd) {
+      stream.write(html);
+      stream.end();
+    });
+
+
     return new Promise(function (resolve, reject) {
       let options = {
         toc : false, outline: true,
@@ -83,12 +91,13 @@ class PdfWriter extends BaseWriter {
 
     <div class='covertitle'>
       <b>${this.converter.getOption('title')}</b>
+      <p>${this.converter.getOption('subtitle')}</p>
     </div>
 
     <!-- Cover page -->
     <div class='nav-container'>
       <h1 class='toc'></h1>
-    ${this.converter.getToc().getHtml()}
+      ${this.converter.getToc().getHtml()}
     </div>
 `
     return htmlHeader
