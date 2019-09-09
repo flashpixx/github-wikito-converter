@@ -63,10 +63,6 @@
         padding: 0px;
     }
 
-    .pdf-doc .navbar-toggle {
-        display: none;
-    }
-
     .pdf-doc .coverimg {
         max-width:50%;
     }
@@ -84,26 +80,6 @@
 
     .pdf-doc pre.hljs, .pdf-doc code {
         font-size: 80%;
-    }
-
-    .pdf-doc .nav > li > a {
-        padding: 3px 6px;
-    }
-
-    .pdf-doc .nav > li > .pdf-doc .nav > li > a {
-        padding:2px 16px;
-    }
-
-    .pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li  > a {
-        padding:2px 24px;
-    }
-
-    .pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li  > a {
-        padding:2px 32px;
-    }
-
-    .pdf-doc .nav li span {
-        padding: 3px 6px;
     }
 
 }
