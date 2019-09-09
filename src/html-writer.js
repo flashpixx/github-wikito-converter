@@ -28,16 +28,7 @@ class HtmlWriter extends BaseWriter {
   buildHeader() {
 
     var htmlHeader = `<!DOCTYPE html>
-<html lang="${this.converter.getOption('lang')}">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>${this.converter.getOption('title')}</title>
-    ${this.getCssTags()}
-    <style>${this.getExtraCss()}</style>
-    ${this.getJsTags()}
-  </head>
+${this.getHeader()}
   <body>
     <div id="app" class="wrapper">
       <div class="jumbotron">

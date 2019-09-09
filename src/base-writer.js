@@ -97,6 +97,19 @@ class BaseWriter {
     throw new Error('You must define an createSubtitleTag(subtitle) in your writer')    
   }
 
+  getHeader() {
+    return `<html lang="${this.converter.getOption('lang')}">
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>${this.converter.getOption('title')}</title>
+      ${this.getCssTags()}
+      <style>${this.getExtraCss()}</style>
+      ${this.getJsTags()}
+    </head>`
+  }
+
 }
 
 module.exports = BaseWriter
