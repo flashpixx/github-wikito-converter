@@ -19,6 +19,7 @@ class Cli {
       .option("-n, --file-name <file-name>", "Output file name [default: 'documentation']", 'documentation')
 
       .option("-t, --title <title>", "Wiki title [default: Documentation]", 'Documentation ')
+      .option("-s, --subtitle <sub title>", "Wiki sub title", '')
       .option("-d, --disable-inline-assets", "Disable inlining of css & js in html document")
 
       .option("--logo-img <logo-file>", "Logo image file")
@@ -46,6 +47,7 @@ class Cli {
       output: this.program.output,
       filename: this.program.fileName,
       title: this.program.title,
+      subtitle: this.program.subtitle,
       logoImage: this.program.logoImg,
       footer: this.program.footer,
       pdfPageCount: this.program.pdfPageCount,

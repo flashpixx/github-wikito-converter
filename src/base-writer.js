@@ -88,6 +88,15 @@ class BaseWriter {
     return logoOption ? datauri(path.resolve(logoOption)) : logoOption
   }
 
+  getSubtitle() {
+    let subtitle = this.converter.getOption('subtitle')
+    return subtitle ? this.createSubtitleTag(subtitle) : ''
+  }
+
+  createSubtitleTag(subtitle) {
+    throw new Error('You must define an createSubtitleTag(subtitle) in your writer')    
+  }
+
 }
 
 module.exports = BaseWriter

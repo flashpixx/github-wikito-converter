@@ -6,6 +6,9 @@ var BaseWriter = require("./base-writer")
 
 class HtmlWriter extends BaseWriter {
 
+// https://codepen.io/ncerminara/pen/eKNROb
+// https://github.com/ravishankarsrrav/bootstrap4-responsive-sidebar
+
   getExtension() {
     return 'html'
   }
@@ -18,7 +21,7 @@ class HtmlWriter extends BaseWriter {
 
     this.converter.getPages().forEach(page => {
       var pageId = helpers.getPageIdFromFilenameOrLink(page.file)
-      html += `<p class="page" id="${pageId}"></p><h1>${page.title}</h1>\n` + page.html
+      html += `<div class="row page"><div class="col" id="${pageId}"><h1>${page.title}</h1>\n` + page.html + "</div></div>"
     }, this)
 
     html += this.buildFooter()
@@ -38,19 +41,59 @@ class HtmlWriter extends BaseWriter {
     <style>${this.getExtraCss()}</style>
     ${this.getJsTags()}
   </head>
-  <body id="page-top" class="html-doc">
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand doc-title" href="#page-top">${this.converter.getOption('title')}</a>
-        </div>
+  <body>
+    <div id="app" class="wrapper">
+
+    <div class="jumbotron">
+      <h1>${this.converter.getOption('title')}</h1>
+      ${this.getSubtitle()}
+    </div>
+
+    <nav id="sidebar">
+      <div class="sidebar-header">
+        ${this.getLogoImage()}
+      </div>
+
+      <ul class="list-unstyled components">
+        <li>
+            <a href="#">Dashboard</a>
+        </li>
+        <li>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Menu</a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="#">sub-menu1</a>
+                </li>
+                <li>
+                    <a href="#">sub-menu2</a>
+                </li>
+                <li>
+                    <a href="#">sub-menu3</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#">Settings</a>
+        </li>
+        
+        <li>
+            <a href="#">Documentation</a>
+        </li>
+        <li>
+            <a href="#">Contact Us</a>
+        </li>
+        <li>
+            <a href="#">Logout</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container" id="content">
+
+`
+
+/*
+        <div class="navbar navbar-default navbar-fixed-top">
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
           ${this.getLogoImage()}
@@ -71,29 +114,26 @@ class HtmlWriter extends BaseWriter {
 
 
         <div class="col-md-9">
-`
+        */
+
     return htmlHeader
   }
 
   buildFooter() {
     var footer = `
-        </div> <!-- /div.col-md-9 -->
-      </div> <!-- /div.row -->
-    </div> <!-- /div.container -->
+      </div>
+    </div>
   </body>
-  <script>
-    $('body').scrollspy({ target: '#scroll-spy', offset: 40 })
-  </script>
 </html>`
     return footer
   }
 
   createImageLogoTag(path) {
-        return `
-              </ul>
-                <ul class="nav navbar-nav navbar-right gwc-navbar-right">
-                <li><img class="logo-img" src="${path}"></li>
-              </ul>`
+        return `<a class="navbar-brand" href="#"><img class="logo-img" src="${path}" /></a>`
+  }
+
+  createSubtitleTag(subtitle) {
+    return `<p>${subtitle}</p>`;
   }
 
   getFooter() {
