@@ -58,6 +58,7 @@ gwtc ./github-wikito-converter.wiki
     -s, --subtitle <sub title>"  Wiki sub title
     -d, --disable-inline-assets  Disable inlining of images, css and js in html document
     --logo-img <logo-file>       Logo image file
+    --lang <language>            Language code (default: en)
     --footer <footer>            Wiki footer
     --toc <toc-file>             Wiki TOC file
     --toc-level <level>          Table of contents deep level [default: 3]
