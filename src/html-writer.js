@@ -6,9 +6,6 @@ var BaseWriter = require("./base-writer")
 
 class HtmlWriter extends BaseWriter {
 
-// https://codepen.io/ncerminara/pen/eKNROb
-// https://github.com/ravishankarsrrav/bootstrap4-responsive-sidebar
-
   getExtension() {
     return 'html'
   }
@@ -43,80 +40,22 @@ class HtmlWriter extends BaseWriter {
   </head>
   <body>
     <div id="app" class="wrapper">
-
-    <div class="jumbotron">
-      <h1>${this.converter.getOption('title')}</h1>
-      ${this.getSubtitle()}
-    </div>
-
-    <nav id="sidebar">
-      <div class="sidebar-header">
-        ${this.getLogoImage()}
+      <div class="jumbotron">
+        <h1>${this.converter.getOption('title')}</h1>
+        ${this.getSubtitle()}
       </div>
 
-      <ul class="list-unstyled components">
-        <li>
-            <a href="#">Dashboard</a>
-        </li>
-        <li>
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Menu</a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
-                <li>
-                    <a href="#">sub-menu1</a>
-                </li>
-                <li>
-                    <a href="#">sub-menu2</a>
-                </li>
-                <li>
-                    <a href="#">sub-menu3</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="#">Settings</a>
-        </li>
-        
-        <li>
-            <a href="#">Documentation</a>
-        </li>
-        <li>
-            <a href="#">Contact Us</a>
-        </li>
-        <li>
-            <a href="#">Logout</a>
-        </li>
-      </ul>
-    </nav>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="sidebar-header">
+          ${this.getLogoImage()}
+        </div>
+        ${this.converter.getToc().getHtml()}
+      </nav>
 
-    <div class="container" id="content">
+      <div class="container-fluid" id="content">
 
 `
-
-/*
-        <div class="navbar navbar-default navbar-fixed-top">
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-          ${this.getLogoImage()}
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-    <div id="documentation-container" class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="nav-container">
-            <div class="nav-inner" id="scroll-spy" style="width: min-content; overflow: auto; top: 60px; bottom: 0; padding 10px 0 10px 0;">
-              <span class="toc"></span>
-              ${this.converter.getToc().getHtml()}
-              ${this.getFooter()}
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col-md-9">
-        */
-
-    return htmlHeader
+   return htmlHeader
   }
 
   buildFooter() {
