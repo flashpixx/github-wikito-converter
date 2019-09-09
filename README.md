@@ -55,6 +55,7 @@ gwtc ./github-wikito-converter.wiki
     -o, --output <output-dir>    Output dir [default: './']
     -n, --file-name <file-name>  Output file name [default: documentation]
     -t, --title <title>          Wiki title [default: Documentation]
+    -s, --subtitle <sub title>"  Wiki sub title
     -d, --disable-inline-assets  Disable inlining of images, css and js in html document
     --logo-img <logo-file>       Logo image file
     --footer <footer>            Wiki footer
