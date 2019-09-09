@@ -81,7 +81,7 @@ class PdfWriter extends BaseWriter {
     ${this.getLogoImage()}
 
     <div class='covertitle'>
-      <b>${this.converter.getOption('title')}</b>
+      <h1>${this.converter.getOption('title')}</h1>
       <p>${this.converter.getOption('subtitle')}</p>
     </div>
 

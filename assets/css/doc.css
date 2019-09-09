@@ -1,104 +1,109 @@
+@media only screen {
 
-html, #app {
-    height: 100%;
+    html, #app {
+        height: 100%;
+    }
+
+    body {
+        text-align: justify;
+        height: 100%;
+    }
+
+    #content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
+        padding-top: 1em;
+    }
+
+    .navbar h1, .navbar h2, .navbar h3, .navbar h4, .navbar h5, .navbar h6 {
+        padding-top: 1.25em;
+        padding-bottom: 0.1em;
+        color: whitesmoke;
+    }
+
+    .page {
+        padding-bottom: 2em;
+    }
+
+    .nav {
+        padding-bottom: 0.75em;
+    }
+
+    #content {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: inline-block;
+        vertical-align: top;
+        height: 86%;
+        width: 85%;
+        padding-right: 2em;
+    }
+
+    .jumbotron {
+        margin-bottom: 0;
+        height: 14%;
+    }
+
+    .navbar {
+        display: inline-block;
+        vertical-align: top;
+        height: 86%;
+        width: 13%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 1.5em;
+    }
+
 }
 
-body {
-    text-align: justify;
-    height: 100%;
-}
-
-#content h1, #content h2, #content h3, #content h4, #content h5, #content h6 {
-    padding-top: 1em;
-}
-
-.navbar h1, .navbar h2, .navbar h3, .navbar h4, .navbar h5, .navbar h6 {
-    padding-top: 1.25em;
-    padding-bottom: 0.1em;
-    color: whitesmoke;
-}
-
-.page {
-    padding-bottom: 2em;
-}
-
-.nav {
-    padding-bottom: 0.75em;
-}
-
-#content {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    display: inline-block;
-	vertical-align: top;
-    height: 86%;
-    width: 85%;
-    padding-right: 2em;
-}
-
-.jumbotron {
-    margin-bottom: 0;
-    height: 14%;
-}
-
-.navbar {
-	display: inline-block;
-	vertical-align: top;
-	height: 86%;
-	width: 13%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 1.5em;
-}
 
 
 
+@media only print {
 
+    pdf-doc{
+        padding: 0px;
+    }
 
+    .pdf-doc .navbar-toggle {
+        display: none;
+    }
 
-pdf-doc{
-    padding: 0px;
-}
+    .pdf-doc .coverimg {
+        max-width:50%;
+    }
 
-.pdf-doc .navbar-toggle {
-    display: none;
-}
+    .pdf-doc .covertitle {
+        padding-top: 40%;
+        text-align: right;
+        page-break-after: always !important;
+    }
 
-.pdf-doc .coverimg {
-    max-width:50%;
-}
+    .pdf-doc .nav-container {
+        page-break-before: always !important;
+        display: block;
+    }
 
-.pdf-doc .covertitle {
-   padding-top: 40%;
-   text-align: right;
-   font-size: 40px;
-}
+    .pdf-doc pre.hljs, .pdf-doc code {
+        font-size: 80%;
+    }
 
-.pdf-doc .nav-container {
-  page-break-before: always !important;
-  display: block;
-}
+    .pdf-doc .nav > li > a {
+        padding: 3px 6px;
+    }
 
-.pdf-doc pre.hljs, .pdf-doc code {
-    font-size: 80%;
-}
+    .pdf-doc .nav > li > .pdf-doc .nav > li > a {
+        padding:2px 16px;
+    }
 
-.pdf-doc .nav > li > a {
-    padding: 3px 6px;
-}
+    .pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li  > a {
+        padding:2px 24px;
+    }
 
-.pdf-doc .nav > li > .pdf-doc .nav > li > a {
-    padding:2px 16px;
-}
+    .pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li  > a {
+        padding:2px 32px;
+    }
 
-.pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li  > a {
-    padding:2px 24px;
-}
+    .pdf-doc .nav li span {
+        padding: 3px 6px;
+    }
 
-.pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li > .pdf-doc .nav > li  > a {
-    padding:2px 32px;
-}
-
-.pdf-doc .nav li span {
-    padding: 3px 6px;
 }
